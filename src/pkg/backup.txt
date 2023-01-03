@@ -1,4 +1,4 @@
-    public String Get(String link) {
+    public String get(String link) {
         String result = "{}";
 
         try {
@@ -25,7 +25,7 @@
         return result;
     }
 
-    public String Post(String link, String parameters) {
+    public String post(String link, String parameters) {  // parameters: String -> HashMap으로 바꿀 것
         String result = "{}";
 
         try {
