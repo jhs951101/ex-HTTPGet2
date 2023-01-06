@@ -12,7 +12,7 @@ public class Main {
 	
 	public void execute() {
 		
-		String response = httpController.post(
+		JSONObject jObject = httpController.post(
 			"(URL)",
 			new HashMap<String, String>(){{
 			    put("username", "(username)");
@@ -20,13 +20,11 @@ public class Main {
 			}}
 		);
 		
-		if(response == null) {
+		if(jObject == null) {
 			System.out.println("Login Failed: 통신 중 오류가 발생하였습니다.");
 		}
 		else {
-			JSONObject jObject = new JSONObject(response);
-			
-		    if(jObject.getBoolean("success")) {
+			if(jObject.getBoolean("success")) {
 		    	System.out.println( String.format("Login Success: %s님 환영합니다!", jObject.getString("name")) );
 		    }
 		    else {

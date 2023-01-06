@@ -7,11 +7,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 public class HttpController {
 	
-    public String get(String originalUrl, Map<String, String> parameters) {
+    public JSONObject get(String originalUrl, Map<String, String> parameters) {
     	
-        String result = null;
+    	JSONObject result = null;
 
         try {
         	String url = originalUrl;
@@ -47,7 +49,7 @@ public class HttpController {
                 response.append(inputLine);
             }
 
-            result = response.toString();
+            result = new JSONObject(response.toString());
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -56,9 +58,9 @@ public class HttpController {
         return result;
     }
 
-    public String post(String originalUrl, Map<String, String> parameters) {
+    public JSONObject post(String originalUrl, Map<String, String> parameters) {
     	
-        String result = null;
+    	JSONObject result = null;
 
         try {
             int i = 0;
@@ -104,7 +106,7 @@ public class HttpController {
                         response.append(responseLine.trim());
                     }
 
-                    result = response.toString();
+                    result = new JSONObject(response.toString());
                 }
             }
         }
